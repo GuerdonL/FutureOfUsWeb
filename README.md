@@ -3,12 +3,12 @@
 
 ## Getting Started as a Contributor
 ### Operating System
-This project is best worked on using a linux distribution, preferably a debian or ubuntu based one (Ubuntu recommended). That said, MacOS will work is you install <a href='https://brew.sh/'><p>homebrew</p></a> and are willing to do the research to translate the below commands from apt/bash. 
+This project is best worked on using a linux distribution, preferably a debian or ubuntu based one (Ubuntu recommended). That said, MacOS will work if you install <a href='https://brew.sh/'><p>homebrew</p></a> and are willing to do the research to translate the below commands from apt/bash. 
 Windows is the worst OS for the job because it isn't unix based, but can be made to work with 
 
-<a href='https://docs.microsoft.com/en-us/windows/wsl/install'><p>Windows Subsystem For Linux (WSL)</p></a> or manual installation of git bash and all other tools (wsl is vastly preffered as it should mirror native ubuntu well).
+<a href='https://docs.microsoft.com/en-us/windows/wsl/install'><p>Windows Subsystem For Linux (WSL)</p></a> or manual installation of git bash and all other tools (wsl is vastly preferred as it should mirror native ubuntu well).
 
-It is reccomended that you use some sort of environmental isolation, such as a vm or sandbox. Virtual machines are likely more beginner friendly, but may be severly limiting in terms of system resources if you opt not to use a type 1 hypervisor (e.g. virtualbox may not be good enough, research type 1 hypervisors like qemu).
+It is recommended that you use some sort of environmental isolation, such as a vm or sandbox. Virtual machines are likely more beginner friendly, but may be severely limiting in terms of system resources if you opt not to use a type 1 hypervisor (e.g. virtualbox may not be good enough, research type 1 hypervisors like qemu).
 
 
 ### How This Project is Arranged
@@ -67,15 +67,15 @@ And finally we can run the development build of the project:
 ```
 netlify dev
 ```
-[This hosts the *local* version of the develoment site on localhost, port 8888. It should launch your defualt browser to view the site, but if not just open a browser and navigate to <a href='http://localhost:8888/'>http://localhost:8888/</a>]
+[This hosts the *local* version of the development site on localhost, port 8888. It should launch your default browser to view the site, but if not just open a browser and navigate to <a href='http://localhost:8888/'>http://localhost:8888/</a>]
   
 Changes you make to the local version of the website code will now be automatically displayed in the browser in real time (each time you save a file), for most modern browsers. Otherwise, refreshing the page will show your changes. It is a good idea to use chrome for this purpose, as it is the main browser we are developing for. Your pr's (pull requests) will however be tested on all the main browsers (e.g. chrome, safari, firefox, edge 🤮) so it is a good idea to test on as many of these as you can before making a pr, to ensure your pr goes smoothly.
   
 ## Development Environment
 
-The general reccomendation for an IDE (Integrated Development Environment) is <a href='https://code.visualstudio.com/'>VSCode</a> simply because it has an extremely large library of plugins that allow for good syntax highlighting, autocomplete, language support, etc.. [note, VSCode is different than Visual Studio] 
+The general recommendation for an IDE (Integrated Development Environment) is <a href='https://code.visualstudio.com/'>VSCode</a> simply because it has an extremely large library of plugins that allow for good syntax highlighting, autocomplete, language support, etc.. [note, VSCode is different than Visual Studio] 
 
-If you would like to *really* learn something useful during this project, I suggest trying to set up either neovim with a terminal multiplexer like tmux or using emacs (you'll also want a fuzzy finder like fzf). Both of these have a pretty extreme learning curve and you will need to manually install support for things that vscode can do in a plug-and-play style. That said they will hugely boost your productivity if you ever do master them. Plus neovim will make you look like a hacker from a bad action movie. (This is mainly a reccomendation for linux users, if you want to learn something and aren't a linux user, just learn linux.)
+If you would like to *really* learn something useful during this project, I suggest trying to set up either neovim with a terminal multiplexer like tmux or using emacs (you'll also want a fuzzy finder like fzf). Both of these have a pretty extreme learning curve and you will need to manually install support for things that vscode can do in a plug-and-play style. That said, they will hugely boost your productivity if you ever master them. Plus neovim will make you look like a hacker from a bad action movie. (This is mainly a recommendation for linux users, if you want to learn something and aren't a linux user, just learn linux.)
 
   
 ## Debugging
@@ -84,5 +84,8 @@ As known errors occur in the cloning and contrib process this section will be up
 
 # CONTRIBUTING
 
-This project uses a hybrid trunk-based development and feature branch workflow version control system. This means that small teams (likely you and one partner) will create a new branch from main when you begin work on a new react component, page layout, or other extremely small scale feature.  You will then commit this branch centrally, and the non-commiting partner will also switch to this branch. You will then work on it together, each puching changes at frequent intervals to remain in sync with each other. Once you complete the smallest scale version of the complete feature, you make a pull request and start on the next small scale feature. This means you are mergining with the main branch as often as possible while not introducing broken code to main, which approximates a Continuous Integration(CI) workflow.
-For example, you may create and merge a simple react component, then create and merge the css styling for that component, and finally create and merge the implementation of that react component in one of the exisiting page layouts. Each of these is a *seperate* feature, and a *seperate* branch. In other words, each branch should be for a different functional atomic feature, that is the smallest a feature can possibly be while still being a functional piece of code.
+This project uses a hybrid trunk-based development and feature branch workflow version control system. This means that small teams (likely you and one partner) will create a new branch from main when you begin work on a new react component, page layout, or other extremely small scale feature.  You will then commit this branch centrally, and the non-committing partner will also switch to this branch. You will then work on it together, each pushing changes at frequent intervals to remain in sync with each other. Once you complete the smallest scale version of the complete feature, you make a pull request and start on the next small scale feature. This means you are merging with the main branch as often as possible while not introducing broken code to main, which approximates a Continuous Integration(CI) workflow.
+For example, you may create and merge a simple react component, then create and merge the css styling for that component, and finally create and merge the implementation of that react component in one of the existing page layouts. Each of these is a *separate* feature, and a *separate* branch. In other words, each branch should be for a different functional atomic feature, that is the smallest a feature can possibly be while still being a functional piece of code.
+
+A new pull request is made after you push a feature branch and complete the feature.
+Learn how to make a pull request on github <a href='https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request'>here</a>
