@@ -84,5 +84,5 @@ As known errors occur in the cloning and contrib process this section will be up
 
 # CONTRIBUTING
 
-Contributions are always welcome, no matter how large or small. Before contributing,
-please read the [code of conduct](CODE_OF_CONDUCT.md).
+This project uses the a hybrid trunk-based development and feature branch workflow version control system. This means that small teams (likely you and one partner) will create a new branch from main when you begin work on a new react component, page layout, or other extremely small scale feature.  You will then commit this branch centrally, and the non-commiting partner will also switch to this branch. You will then work on it together, each puching changes at frequent intervals to remain in sync with each other. Once you complete the smallest scale version of the complete feature, you make a pull request and start on the next small scale feature. This means you are mergining with the main branch as often as possible while not introducing broken code to main, which approximates a Continuous Integration(CI) workflow.
+For example, you may create and merge a simple react component, then create and merge the css styling for that component, and finally create and merge the implementation of that react component in one of the exisiting page layouts. Each of these is a *seperate* feature, and a *seperate* branch. In other words, each branch should be for a different functional atomic feature, that is the smallest a feature can possibly be while still being a functional piece of code.
