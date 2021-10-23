@@ -1,124 +1,86 @@
-# Gatsby + Netlify CMS Starter
-
+# Future Of Us Website Development
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b654c94e-08a6-4b79-b443-7837581b1d8d/deploy-status)](https://app.netlify.com/sites/gatsby-starter-netlify-cms-ci/deploys)
 
-**Note:** This starter uses [Gatsby v2](https://www.gatsbyjs.org/blog/2018-09-17-gatsby-v2/).
+## Getting Started as a Contributor
+### Operating System
+This project is best worked on using a linux distribution, preferably a debian or ubuntu based one (Ubuntu recommended). That said, MacOS will work is you install <a href='https://brew.sh/'><p>homebrew</p></a> and are willing to do the research to translate the below commands from apt/bash. 
+Windows is the worst OS for the job because it isn't unix based, but can be made to work with 
 
-This repo contains an example business website that is built with [Gatsby](https://www.gatsbyjs.org/), and [Netlify CMS](https://www.netlifycms.org): **[Demo Link](https://gatsby-netlify-cms.netlify.com/)**.
+<a href='https://docs.microsoft.com/en-us/windows/wsl/install'><p>Windows Subsystem For Linux (WSL)</p></a> or manual installation of git bash and all other tools (wsl is vastly preffered as it should mirror native ubuntu well).
 
-It follows the [JAMstack architecture](https://jamstack.org) by using Git as a single source of truth, and [Netlify](https://www.netlify.com) for continuous deployment, and CDN distribution.
+It is reccomended that you use some sort of environmental isolation, such as a vm or sandbox. Virtual machines are likely more beginner friendly, but may be severly limiting in terms of system resources if you opt not to use a type 1 hypervisor (e.g. virtualbox may not be good enough, research type 1 hypervisors like qemu).
 
-## Features
 
-- A simple landing page with blog functionality built with Netlify CMS
-- Editable Pages: Landing, About, Product, Blog-Collection and Contact page with Netlify Form support
-- Create Blog posts from Netlify CMS
-- Tags: Separate page for posts under each tag
-- Basic directory organization
-- Uses Bulma for styling, but size is reduced by `purge-css-plugin`
-- Blazing fast loading times thanks to pre-rendered HTML and automatic chunk loading of JS files
-- Uses `gatsby-image` with Netlify-CMS preview support
-- Separate components for everything
-- Netlify deploy configuration
-- Netlify function support, see `lambda` folder
-- Perfect score on Lighthouse for SEO, Accessibility and Performance (wip:PWA)
-- ..and more
+### How This Project is Arranged
+This project uses the gatsby framework as a static site generator that automates the process of loading html and then javascript. This approach allows for fast load times and SEO (html is more searchable and therefore SEO friendly) but also an extremely fast and responsive site with js and react components. 
 
-## Prerequisites
+The workflow of gatsby involves constructing a basic page layout in html, and then wrapping the html in, or injecting the html with, react components, which define layouts and interactions. We then style the react components with CSS in another file that links with the react file to make a cohesive component (ex. card.js links with card.css to create one styled component). Gatsby also acts as a system for plugins, such as stripe etc. which can be integrated into the site.
 
-- Node (I recommend using v8.2.0 or higher)
-- [Gatsby CLI](https://www.gatsbyjs.com/docs/reference/gatsby-cli/)
-- [Netlify CLI](https://github.com/netlify/cli)
+Once a change has been made to the site, you will make a pull request to merge your development branch back to the main branch where the website codebase is maintained. Upon approval of the pull and merger with the main branch, the entire codebase will be rebuilt in our CMS (content management system) Netlify-cms and deployed on Netlify proper, meaning there is always a deployed development site with the most recent changes.
 
-## Getting Started (Recommended)
+We also will use Yarn to manage dependencies, so you should have to do minimal manual dependency management. That said, messing up a dependency is easy to do, and easy to overlook. If you then get the dependency pushed and merged, bad things can happen. Please be careful with your dependencies! (this is why isolated environments are recommended above).
 
-Netlify CMS can run in any frontend web environment, but the quickest way to try it out is by running it on a pre-configured starter site with Netlify. The example here is the Kaldi coffee company template (adapted from [One Click Hugo CMS](https://github.com/netlify-templates/one-click-hugo-cms)). Use the button below to build and deploy your own copy of the repository:
+### Cloning and Dependencies
+[The following is a command guide for ubuntu and debian based systems. WSL should work with this if it uses the default Ubuntu version or a deb based distro]
 
-<a href="https://app.netlify.com/start/deploy?repository=https://github.com/netlify-templates/gatsby-starter-netlify-cms&amp;stack=cms"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a>
-
-After clicking that button, you’ll authenticate with GitHub and choose a repository name. Netlify will then automatically create a repository in your GitHub account with a copy of the files from the template. Next, it will build and deploy the new site on Netlify, bringing you to the site dashboard when the build is complete. Next, you’ll need to set up Netlify’s Identity service to authorize users to log in to the CMS.
-
-### Access Locally
-
-Pulldown a local copy of the Github repository Netlify created for you, with the name you specified in the previous step
-```
-$ git clone https://github.com/[GITHUB_USERNAME]/[REPO_NAME].git
-$ cd [REPO_NAME]
-$ yarn
-$ netlify dev # or ntl dev
-```
-
-This uses the new [Netlify Dev](https://www.netlify.com/products/dev/?utm_source=blog&utm_medium=netlifycms&utm_campaign=devex) CLI feature to serve any functions you have in the `lambda` folder.
-
-To test the CMS locally, you'll need to run a production build of the site:
+If you do not have git or wget installed, do so now: 
 
 ```
-$ npm run build
-$ netlify dev # or ntl dev
+sudo apt install git wget
 ```
 
-### Media Libraries (installed, but optional)
-
-Media Libraries have been included in this starter as a default. If you are not planning to use `Uploadcare` or `Cloudinary` in your project, you **can** remove them from module import and registration in `src/cms/cms.js`. Here is an example of the lines to comment or remove them your project.
-
-```javascript
-import CMS from 'netlify-cms-app'
-// import uploadcare from 'netlify-cms-media-library-uploadcare'
-// import cloudinary from 'netlify-cms-media-library-cloudinary'
-
-import AboutPagePreview from './preview-templates/AboutPagePreview'
-import BlogPostPreview from './preview-templates/BlogPostPreview'
-import ProductPagePreview from './preview-templates/ProductPagePreview'
-import IndexPagePreview from './preview-templates/IndexPagePreview'
-
-// CMS.registerMediaLibrary(uploadcare);
-// CMS.registerMediaLibrary(cloudinary);
-
-CMS.registerPreviewTemplate('index', IndexPagePreview)
-CMS.registerPreviewTemplate('about', AboutPagePreview)
-CMS.registerPreviewTemplate('products', ProductPagePreview)
-CMS.registerPreviewTemplate('blog', BlogPostPreview)
-```
-
-Note: Don't forget to also remove them from `package.json` and `yarn.lock` / `package-lock.json` using `yarn` or `npm`. During the build netlify-cms-app will bundle the media libraries as well, having them removed will save you build time.
-Example:
-```
-yarn remove netlify-cms-media-library-uploadcare
-```
-OR
-```
-yarn remove netlify-cms-media-library-cloudinary
-```
-## Getting Started (Without Netlify)
+Now we will install the Node Version Manager tool, which allows us to easily control our version of node.
 
 ```
-$ gatsby new [SITE_DIRECTORY_NAME] https://github.com/netlify-templates/gatsby-starter-netlify-cms/
-$ cd [SITE_DIRECTORY_NAME]
-$ npm run build
-$ npm run serve
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
 ```
 
-### Setting up the CMS
+Restart the terminal to apply changes.
+Then install node version 14 and switch to the installed version:
 
-Follow the [Netlify CMS Quick Start Guide](https://www.netlifycms.org/docs/quick-start/#authentication) to set up authentication, and hosting.
+```
+nvm install 14 && nvm use 14
+```
+Now we will install gatsby version 2, netlify-cli, and yarn. These three are our main development tools.
 
+```
+npm install -g gatsby@2.32.0 netlify-cli yarn
+```
+[Note that getting 20 to 30 warnings is the expected behavior, many of these are simply skipping the optional dependencies for other operating systems. These can safely be ignored, if you get errors or a failed installation something has actually gone wrong.]
+
+Now that everything is installed let's clone and enter the repository:
+
+```
+git clone https://github.com/GuerdonL/FutureOfUsWeb.git
+cd FutureOfUsWeb
+```
+
+Now we run yarn to sync dependencies on our system to those already specified in the project:
+
+```
+yarn
+```
+[more warnings expected, although this is a likely step to run into real errors on]
+
+And finally we can run the development build of the project:
+
+```
+netlify dev
+```
+[This hosts the *local* version of the develoment site on localhost, port 8888. It should launch your defualt browser to view the site, but if not just open a browser and navigate to <a href='http://localhost:8888/'>http://localhost:8888/</a>]
+  
+Changes you make to the local version of the website code will now be automatically displayed in the browser in real time (each time you save a file), for most modern browsers. Otherwise, refreshing the page will show your changes. It is a good idea to use chrome for this purpose, as it is the main browser we are developing for. Your pr's (pull requests) will however be tested on all the main browsers (e.g. chrome, safari, firefox, edge 🤮) so it is a good idea to test on as many of these as you can before making a pr, to ensure your pr goes smoothly.
+  
+## Development Environment
+
+The general reccomendation for and IDE (Integrated Development Environment) is <a href='https://code.visualstudio.com/'>VSCode</a> simply because it has an extremely large library of plugins that allow for good syntax highlighting, autocomplete, language support, etc.. [note, VSCode is different than Visual Studio] 
+
+If you would like to *really* learn something useful during this project, I suggest trying to set up either neovim with a terminal multiplexer like tmux or using emacs (you'll also want a fuzzy finder like fzf). Both of these have a pretty extreme learning curve and you will need to manually install support for things that vscode can do in a plug-and-play style. That said they will hugely boost your productivity if you ever do master them. Plus neovim will make you look like a hacker from a bad action movie. (This is mainly a reccomendation for linux users, if you want to learn something and aren't a linux user, just learn linux.)
+
+  
 ## Debugging
 
-Windows users might encounter `node-gyp` errors when trying to npm install.
-To resolve, make sure that you have both Python 2.7 and the Visual C++ build environment installed.
-
-```
-npm config set python python2.7
-npm install --global --production windows-build-tools
-```
-
-[Full details here](https://www.npmjs.com/package/node-gyp 'NPM node-gyp page')
-
-MacOS users might also encounter some errors, for more info check [node-gyp](https://github.com/nodejs/node-gyp). We recommend using the latest stable node version.
-
-## Purgecss
-
-This plugin uses [gatsby-plugin-purgecss](https://www.gatsbyjs.org/packages/gatsby-plugin-purgecss/) and [bulma](https://bulma.io/). The bulma builds are usually ~170K but reduced 90% by purgecss.
+As known errors occur in the cloning and contrib process this section will be updated. 
 
 # CONTRIBUTING
 
