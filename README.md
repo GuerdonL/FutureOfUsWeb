@@ -1,6 +1,6 @@
 # Future Of Us Website Development
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b654c94e-08a6-4b79-b443-7837581b1d8d/deploy-status)](https://app.netlify.com/sites/gatsby-starter-netlify-cms-ci/deploys)
-
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b654c94e-08a6-4b79-b443-7837581b1d8d/deploy-status)](https://app.netlify.com/sites/compassionate-wing-211df6/deploys)
+<a href='https://compassionate-wing-211df6.netlify.app/'>Deployed Website Here</a>
 ## Getting Started as a Contributor
 ### Operating System
 This project is best worked on using a linux distribution, preferably a debian or ubuntu based one (Ubuntu recommended). That said, MacOS will work if you install <a href='https://brew.sh/'><p>homebrew</p></a> and are willing to do the research to translate the below commands from apt/bash. 
