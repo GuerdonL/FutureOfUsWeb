@@ -89,3 +89,5 @@ For example, you may create and merge a simple react component, then create and 
 
 A new pull request is made after you push a feature branch and complete the feature.
 Learn how to make a pull request on github <a href='https://docs.github.com/en/github/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request'>here</a>
+
+If you would like to contribute and are not yet a member of the corresponding slack group for this project, please reach out to recieve access to the slack and further instruction.
