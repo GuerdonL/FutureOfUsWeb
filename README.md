@@ -1,5 +1,5 @@
 # Future Of Us Website Development
-[![Netlify Status](https://api.netlify.com/api/v1/badges/b654c94e-08a6-4b79-b443-7837581b1d8d/deploy-status)](https://app.netlify.com/sites/compassionate-wing-211df6/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/5b2abda4-94a3-4fc7-890b-f6bff74bd155/deploy-status)](https://app.netlify.com/sites/compassionate-wing-211df6/deploys)
 <a href='https://compassionate-wing-211df6.netlify.app/'>Deployed Website Here</a>
 ## Getting Started as a Contributor
 ### Operating System
